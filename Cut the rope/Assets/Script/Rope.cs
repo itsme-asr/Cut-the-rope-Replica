@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    public HingeJoint2D hook;
+    public Rigidbody2D hook;
 
     public GameObject linkPrefab;
     public int links = 7;
@@ -17,9 +17,14 @@ public class Rope : MonoBehaviour
 
     private void generateRope()
     {
+        Rigidbody2D previousRB = hook;
         for (int i = 0; i < links; i++)
         {
-            Instantiate(linkPrefab, transform);
+            GameObject link = Instantiate(linkPrefab, transform);
+            HingeJoint2D joint = link.GetComponent<HingeJoint2D>();
+            joint.connectedBody = previousRB;
+
+            previousRB = link.GetComponent<Rigidbody2D>();
 
         }
 
