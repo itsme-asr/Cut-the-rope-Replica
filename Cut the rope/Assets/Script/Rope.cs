@@ -7,6 +7,7 @@ public class Rope : MonoBehaviour
     public Rigidbody2D hook;
 
     public GameObject linkPrefab;
+    public Weight weight;
     public int links = 7;
 
     void Start()
@@ -25,6 +26,15 @@ public class Rope : MonoBehaviour
             joint.connectedBody = previousRB;
 
             previousRB = link.GetComponent<Rigidbody2D>();
+
+            if (i < links - 1)
+            {
+                previousRB = link.GetComponent<Rigidbody2D>();
+            }
+            else
+            {
+                weight.connectRopeEnd(link.GetComponent<Rigidbody2D>());
+            }
 
         }
 

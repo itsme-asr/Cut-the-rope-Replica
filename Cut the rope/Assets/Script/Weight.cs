@@ -8,9 +8,11 @@ public class Weight : MonoBehaviour
     public void connectRopeEnd(Rigidbody2D rgb)
     {
         HingeJoint2D joint = gameObject.AddComponent<HingeJoint2D>();
+        joint.autoConfigureConnectedAnchor = false;
         joint.connectedBody = rgb;
         joint.anchor = Vector2.zero;
         joint.connectedAnchor = new Vector2(0f, -distanceFromEnd);
+
 
     }
 
