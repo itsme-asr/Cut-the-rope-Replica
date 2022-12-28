@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public HingeJoint2D hook;
+
+    public GameObject linkPrefab;
+    public int links = 7;
+
     void Start()
     {
-        
+        generateRope();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void generateRope()
     {
-        
+        for (int i = 0; i < links; i++)
+        {
+            Instantiate(linkPrefab, transform);
+
+        }
+
+
     }
+
 }
+
+
