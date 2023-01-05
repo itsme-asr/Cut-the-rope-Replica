@@ -14,6 +14,7 @@ public class ropeCutter : MonoBehaviour
                 if (hit.collider.tag == "Link")
                 {
                     Destroy(hit.collider.gameObject);
+
                 }
             }
 
