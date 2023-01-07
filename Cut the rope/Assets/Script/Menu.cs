@@ -13,6 +13,11 @@ public class Menu : MonoBehaviour
 
     public void nextLevel()
     {
+        Invoke("Play", 1);
+    }
+
+    public void Play()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
