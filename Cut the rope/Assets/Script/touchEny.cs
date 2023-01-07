@@ -4,16 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class touchEny : MonoBehaviour
 {
+    [SerializeField] private AudioSource deathSound;
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == "Candy")
         {
             Destroy(col.gameObject);
-            restartLevel();
+            deathSound.Play();
+            Invoke("restartLevel", 2);
         }
     }
 
-    private void restartLevel()
+    public void restartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
